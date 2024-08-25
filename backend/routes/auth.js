@@ -2,6 +2,7 @@ const express = require("express")
 const User = require('../models/User')
 const router = express.Router()
 const {body, validationResult} = require('express-validator')
+const bcrypt = require('bcryptjs')
 
 
 // Create a user using: POST "/api/auth/createuser" . No login required

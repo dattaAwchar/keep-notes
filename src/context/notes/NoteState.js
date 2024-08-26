@@ -86,12 +86,14 @@ const notesInitial = [
 
 //   Edit a Note
   const editNote = () => {
-    // setNotes(notes.)
   }
 
   // Delete a Note
-  const deleteNote = () => {
-    // setNotes(notes.pop(note))
+  const deleteNote = (id) => {
+    // TODO: API Call
+    console.log("deleting note with id" + id);
+    const newNotes = notes.filter((note)=> {return note._id!==id})
+    setNotes(newNotes)
   }
 
     return (

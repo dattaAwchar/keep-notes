@@ -37,6 +37,9 @@ const NoteState = (props) => {
       body: JSON.stringify({title, description, tag})
     });
 
+    const json = await response.json();
+    console.log(json);
+
     console.log("adding a new note");
 
     const note = {
@@ -61,18 +64,22 @@ const NoteState = (props) => {
       },
       body: JSON.stringify({title, description, tag})
     });
-    const json =  response.json();
+    const json = await response.json();
+    console.log(json)
 
+    let newNotes = JSON.parse(JSON.stringify(notes))
 
     // Logic to edit client
-    for (let i = 0; i < notes.length; i++) {
-      const element = notes[i];
+    for (let i = 0; i < newNotes.length; i++) {
+      const element = newNotes[i];
       if (element._id === id) {
-        element.title = title
-        element.description = description
-        element.tag = tag
+        newNotes[i].title = title
+        newNotes[i].description = description
+        newNotes[i].tag = tag
+        break;
       }
     }
+    setNotes(newNotes)
   }
 
   // Delete a Note
@@ -85,7 +92,7 @@ const NoteState = (props) => {
         'auth-token': "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjZjYzdmZDUwNmNjNjU1ZDVlZTBlMjY3In0sImlhdCI6MTcyNDY3ODEwMX0.-RzJX4HGnO8CV-1-U7kXjpdep3mRDwK84x-cN--WRnA"
       }
     });
-    const json =  response.json();
+    const json = response.json();
     console.log(json)
 
 

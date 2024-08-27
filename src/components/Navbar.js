@@ -26,11 +26,11 @@ const Navbar = () => {
                                 <Link className={`nav-link ${location.pathname === '/about' ? "active" : ""}`} to="/about">About</Link>
                             </li>
                         </ul>
-                        <form class="d-flex" role="search" data-bs-theme='light'>
-                            <input class="form-control me-2" type="search" placeholder="Search Note" aria-label="Search" />
-                            <button class="btn btn-outline-light me-2" type="submit">Search</button>
-                            <Link class="btn btn-outline-light me-2" to="/login">Login</Link>
-                            <Link class="btn btn-outline-light" to="/signup">Signup</Link>
+                        <form className="d-flex" role="search" data-bs-theme='light'>
+                            <input className="form-control me-2" type="search" placeholder="Search Note" aria-label="Search" />
+                            <Link className="btn btn-outline-light me-2" to='/search'>Search</Link>
+                            <Link className="btn btn-outline-light me-2" to="/login">Login</Link>
+                            <Link className="btn btn-outline-light" to="/signup">Signup</Link>
                         </form>
                     </div>
                 </div>

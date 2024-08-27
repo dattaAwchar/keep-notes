@@ -31,11 +31,11 @@ const AddNote = () => {
                 </div>
                 <div className="mb-3">
                     <label htmlFor="description" className="form-label fw-bold">Description</label>
-                    <textarea class="form-control" placeholder='Enter description here...' type="text" id="description" name='description' rows="3" cols='4' onChange={onchange} value={note.description} minLength={3} required></textarea>
+                    <textarea className="form-control" placeholder='Enter description here...' type="text" id="description" name='description' rows="3" cols='4' onChange={onchange} value={note.description} minLength={3} required></textarea>
                 </div>
                 <div className="mb-3">
                     <label htmlFor="tag" className="form-label fw-bold">Tag</label>
-                    <select class="form-select" aria-label="Default select example" id="tag" name='tag' onChange={onchange} value={note.tag}>
+                    <select className="form-select" aria-label="Default select example" id="tag" name='tag' onChange={onchange} value={note.tag}>
                         <option selected>Select Note Type</option>
                         <option value="General Note">General Note</option>
                         <option value="Personal Note">Personal Note</option>

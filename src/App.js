@@ -8,22 +8,35 @@ import Alert from './components/Alert';
 import Login from './components/Login';
 import Singup from './components/Singup';
 import SearchNotes from './components/SearchNotes';
+import { useState } from 'react';
 
 function App() {
+
+  const [alert, setAlert] = useState(null);
+  const showAlert = (message, type) => {
+    setAlert({
+      msg: message,
+      type: type
+    })
+    setTimeout(()=>{
+      setAlert(null);
+    }, 2000)
+  }
+
   return (
     <>
 
       <NoteState>
         <Router>
           <Navbar />
-          <Alert message="This is amazing, datta awchar"/>
+          <Alert alert={alert}/>
           <div className="container">
             <Routes>
-              <Route exact path='/' element={<Home />} />
+              <Route exact path='/' element={<Home showAlert={showAlert}/>} />
               <Route exact path='/about' element={<About />} />
               <Route exact path='/search' element={<SearchNotes />} />
-              <Route exact path='/login' element={<Login />} />
-              <Route exact path='/signup' element={<Singup />} />
+              <Route exact path='/login' element={<Login showAlert={showAlert}/>} />
+              <Route exact path='/signup' element={<Singup showAlert={showAlert}/>} />
             </Routes>
           </div>
         </Router>

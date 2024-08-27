@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
-const Singup = () => {
+const Singup = (props) => {
 
     const [credentials, setCredentials] = useState({ name: "", email: "", password: "", confirmPassword: "" })
     let navigate = useNavigate()
@@ -22,9 +22,10 @@ const Singup = () => {
             // save the auth token and redirect
             localStorage.setItem("token", json.authtoken)
             navigate("/");
+            props.showAlert("Account Create Successfully", "success")
         }
         else {
-            alert("Invalid Credentials")
+            props.showAlert("Invalid Credentials", "danger")
         }
     }
     
@@ -34,8 +35,9 @@ const Singup = () => {
 
     return (
         <>
-            <div className="container d-inline-flex p-2  justify-content-center">
-                <form onSubmit={handleSubmit}>
+            <div className="container d-grid p-2  justify-content-center">
+                <h1 className='text-center'>Signup</h1>
+                <form onSubmit={handleSubmit} className='mt-3'>
                     <div className="mb-3">
                         <label htmlFor="name" className="form-label">Name</label>
                         <input type="text" className="form-control" id="name" name='name' placeholder='Enter your name' onChange={onChange} />
@@ -51,7 +53,7 @@ const Singup = () => {
                     </div>
                     <div className="mb-3">
                         <label htmlFor="confirmPassword" className="form-label">Confirm Password</label>
-                        <input type="password" className="form-control" name='confirmPassword' id="confirmPassword" placeholder='Confirm password' onChange={onChange} minLength={5} required/>
+                        <input type="password" className="form-control" name='confirmPassword' id="confirmPassword" placeholder='Enter confirm password' onChange={onChange} minLength={5} required/>
                     </div>
 
                     <button type="submit" className="btn btn-primary">Submit</button>

@@ -18,7 +18,7 @@ const Alert = (props) => {
 
     return (
         <>
-            <div style={{ height: '5rem' }}>
+            <div style={{ height: '3rem' }}>
                 {props.alert && (
                     <div
                         style={{ height: '2.5rem' }}

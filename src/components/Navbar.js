@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { Link, useLocation } from 'react-router-dom'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 
 const Navbar = () => {
 
@@ -7,6 +7,13 @@ const Navbar = () => {
     useEffect(() => {
         console.log(location.pathname)
     }, [location]);
+    
+    let navigate = useNavigate()
+    
+    const handleLogout = () => {
+        localStorage.removeItem('token');
+        navigate('/login');
+    }    
 
 
     return (
@@ -29,9 +36,11 @@ const Navbar = () => {
                         <form className="d-flex" role="search" data-bs-theme='light'>
                             <input className="form-control me-2" type="search" placeholder="Search Note" aria-label="Search" />
                             <Link className="btn btn-outline-light me-2" to='/search'>Search</Link>
+                        </form>
+                        {!localStorage.getItem('token')?<div>
                             <Link className="btn btn-outline-light me-2" to="/login">Login</Link>
                             <Link className="btn btn-outline-light" to="/signup">Signup</Link>
-                        </form>
+                        </div>: <button onClick={handleLogout} className='btn btn-outline-light'>Logout</button>}
                     </div>
                 </div>
             </nav>

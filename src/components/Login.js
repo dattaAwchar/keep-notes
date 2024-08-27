@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import backgroundImage from './LoginBackground.jpg'
 
-const Login = (props) => {    
+const Login = (props) => {
 
     const [credentials, setCredentials] = useState({ email: "", password: "" })
     let navigate = useNavigate()
@@ -20,8 +21,8 @@ const Login = (props) => {
         if (json.success) {
             // save the auth token and redirece
             localStorage.setItem("token", json.authtoken)
-            navigate("/");
             props.showAlert("Logged in Successfully", "success")
+            navigate("/");
 
         }
         else {
@@ -36,8 +37,8 @@ const Login = (props) => {
 
     return (
         <>
-            <div className="container d-grid p-2  justify-content-center">
-                <h1 className='text-center'>Login</h1>
+            <div className="container d-grid p-2 justify-content-center">
+                <h1 className='text-center'>Login to keep-notes</h1>
                 <form onSubmit={handleSubmit} className='mt-3'>
                     <div className="mb-3">
                         <label htmlFor="email" className="form-label">Email address</label>

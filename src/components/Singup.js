@@ -36,7 +36,7 @@ const Singup = (props) => {
     return (
         <>
             <div className="container d-grid p-2  justify-content-center">
-                <h1 className='text-center'>Signup</h1>
+                <h1 className='text-center'>Signup to keep-notes</h1>
                 <form onSubmit={handleSubmit} className='mt-3'>
                     <div className="mb-3">
                         <label htmlFor="name" className="form-label">Name</label>

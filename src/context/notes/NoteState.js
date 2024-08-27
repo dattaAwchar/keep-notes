@@ -18,7 +18,6 @@ const NoteState = (props) => {
         'auth-token': "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjZjYzdmZDUwNmNjNjU1ZDVlZTBlMjY3In0sImlhdCI6MTcyNDY3ODEwMX0.-RzJX4HGnO8CV-1-U7kXjpdep3mRDwK84x-cN--WRnA"
       }});
       const json = await response.json()
-      console.log(json);
       setNotes(json)
         
     }
@@ -37,20 +36,9 @@ const NoteState = (props) => {
       body: JSON.stringify({title, description, tag})
     });
 
-    const json = await response.json();
-    console.log(json);
-
-    console.log("adding a new note");
-
-    const note = {
-      "user": "66cc7fd506cc655d5ee0e267",
-      "title": title,
-      "description": description,
-      "tag": tag,
-      "_id": "66cc80b6688134ec00cb4643",
-      "__v": 0
-    }
+    const note = await response.json();
     setNotes(notes.concat(note))
+    
   }
 
   //   Edit a Note
@@ -65,7 +53,6 @@ const NoteState = (props) => {
       body: JSON.stringify({title, description, tag})
     });
     const json = await response.json();
-    console.log(json)
 
     let newNotes = JSON.parse(JSON.stringify(notes))
 
@@ -93,10 +80,7 @@ const NoteState = (props) => {
       }
     });
     const json = response.json();
-    console.log(json)
 
-
-    console.log("deleting note with id" + id);
     const newNotes = notes.filter((note) => { return note._id !== id })
     setNotes(newNotes)
   }

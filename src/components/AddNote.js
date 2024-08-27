@@ -36,7 +36,7 @@ const AddNote = () => {
                 <div className="mb-3">
                     <label htmlFor="tag" className="form-label fw-bold">Tag</label>
                     <select className="form-select" aria-label="Default select example" id="tag" name='tag' onChange={onchange} value={note.tag}>
-                        <option selected>Select Note Type</option>
+                        <option value=''>Select Note Type</option>
                         <option value="General Note">General Note</option>
                         <option value="Personal Note">Personal Note</option>
                         <option value="To-Do List">To-Do List</option>
